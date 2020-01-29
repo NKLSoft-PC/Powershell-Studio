@@ -1,0 +1,12 @@
+<#  :cmd header for PowerShell script
+@   set dir=%~dp0
+@   set ps1="%TMP%\%~n0-%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.ps1"
+@   copy /b /y "%~f0" %ps1% >nul
+@   powershell -NoProfile -ExecutionPolicy Bypass -File %ps1% %*
+@   del /f %ps1%
+@   goto :eof
+#>
+
+# Paste arbitrary PowerShell code here.
+# In this example, all arguments are echoed.
+$Args | % { 'arg #{0}: [{1}]' -f ++$i, $_ }
